@@ -10,15 +10,16 @@ const $PORT = process.env.PORT || 5000;
 
 app.get('/api', (req, res, next) => {
   try {
-    res.send('/GET API routes here');
+    res.send('/GET/ API routes here');
   } catch (error) {
     next(error);
   }
 });
 
-app.get('*', (req, res) => {
+app.get('*', (req, res, next) => {
   try {
-    res.sendFile(path.join(__dirname + '../client/build/index.html'));
+    console.log('dirname', __dirname);
+    res.sendFile(path.join(__dirname, '..', '/client/build/index.html'));
   } catch (error) {
     next(error);
   }
